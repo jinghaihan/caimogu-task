@@ -4,6 +4,10 @@ on:
     - cron: '0 01 * * *'
       timezone: Asia/Shanghai
   workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,10 +23,10 @@ jobs:
           cache: maven
       - name: Build with Maven
         env:
-          OWNER_REPO: ${{secrets.OWNER_REPO}}
-          MY_GITHUB_API_TOKEN: ${{secrets.MY_GITHUB_API_TOKEN}}
+          OWNER_REPO: ${{github.repository}}
+          MY_GITHUB_API_TOKEN: ${{github.token}}
           CMG_PASSWORD: ${{secrets.CMG_PASSWORD}}
           CMG_NAME: ${{secrets.CMG_NAME}}
-          REPO_PATH: ${{secrets.REPO_PATH}}
+          REPO_PATH: src/main/resources
           SUB_ACCOUNT: ${{secrets.SUB_ACCOUNT}}
         run: mvn -B -q package --file pom.xml
