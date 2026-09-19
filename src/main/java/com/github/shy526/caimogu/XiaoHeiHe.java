@@ -105,7 +105,10 @@ public class XiaoHeiHe {
             if (temp != null && temp.isEmpty()) {
                 break;
             }
-            comments.addAll(temp);
+            if (temp != null) {
+                comments.addAll(temp);
+            }
+
         }
         return comments;
     }
