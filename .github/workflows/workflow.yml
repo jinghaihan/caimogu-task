@@ -1,7 +1,7 @@
 name: Java CI with Maven
 on:
   schedule:
-    - cron: '0 01 * * *'
+    - cron: '17 01 * * *'
       timezone: Asia/Shanghai
   workflow_dispatch:
 
